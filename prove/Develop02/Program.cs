@@ -83,7 +83,7 @@ class Program
                         if (i + 3 < lines.Length)
                         {
                             string[] entryLines = new string[] { lines[i], lines[i + 1], lines[i + 2], lines[i + 3] };
-                            journalEntries.Add(Journal.FromTextBlock(entryLines));
+                            journalEntries.Add(Entry.FromTextBlock(entryLines));
                         }
                     }
                     Console.WriteLine("Entries loaded from text file.");
