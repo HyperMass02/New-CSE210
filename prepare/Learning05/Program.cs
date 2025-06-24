@@ -23,13 +23,15 @@ class Program
             double area = s.GetArea();
             Console.WriteLine($"The {color} shape has an area of {area}.");
         }
-        
-            Console.WriteLine("Hello Learning05 World!");
 
-            Animal lion = new Lion("Simba");
-            Animal monkey = new Monkey("Joe");
+        Console.WriteLine("Hello Learning05 World!");
 
-            lion.MakeSound();
-            monkey.MakeSound();
+        Animal lion = new Lion("Simba");
+        Animal monkey = new Monkey("Joe");
+        Animal cat = new Cat("Muffin");
+
+        lion.MakeSound();
+        monkey.MakeSound();
+        cat.MakeSound();
     }
 }
