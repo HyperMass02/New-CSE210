@@ -21,7 +21,7 @@ class Program
 
             if (input == "1")
             {
-                Console.Write("Enter card type (monster, xyz, spell, trap, fusion, synchro): ");
+                Console.Write("Enter card type (monster, spell, trap, xyz, fusion, synchro): ");
                 string type = Console.ReadLine().ToLower();
                 manager.AddCard(type);
             }

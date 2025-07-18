@@ -17,16 +17,16 @@ public class MonsterCard : Card
     public int GetAttack() => _attack;
     public int GetDefense() => _defense;
     public string GetEffect() => _effect;
-    private int GetLevel() => _level;
+    public int GetLevel() => _level;
 
     public override void DisplayCard()
     {
         base.DisplayCard();
-        Console.WriteLine($"\nLevel: {_level} Attack: {_attack}\nDefense: {_defense}\nEffect: {_effect}");
+        Console.WriteLine($"Level: {_level}\nAttack: {_attack}\nDefense: {_defense}\nEffect: {_effect}");
     }
 
     public override string GetCardData()
     {
-        return $"Monster|{GetName()}|{GetAttribute()}|{GetLevel()}|{_attack}|{_defense}|{_effect}";
+        return $"Monster|{GetName()}|{GetAttribute()}|{_level}|{_attack}|{_defense}|{_effect}";
     }
 }

@@ -50,7 +50,7 @@ public class CardManager
 
             _cards.Add(new TrapCard(name, attribute, trapType, effect));
         }
-                else if (type == "xyz")
+        else if (type == "xyz")
         {
             Console.Write("Enter Rank: ");
             int rank = int.Parse(Console.ReadLine());
@@ -66,7 +66,7 @@ public class CardManager
 
             _cards.Add(new XYZCard(name, attribute, rank, attack, defense, effect));
         }
-         else if (type == "fusion")
+        else if (type == "fusion")
         {
             Console.Write("Enter Level: ");
             int level = int.Parse(Console.ReadLine());
@@ -77,13 +77,13 @@ public class CardManager
             Console.Write("Enter Defense: ");
             int defense = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter Fusion Materials: ");
-            string materials = Console.ReadLine();
-
             Console.Write("Enter Effect: ");
             string effect = Console.ReadLine();
 
-            _cards.Add(new FusionCard(name, level, attribute, materials,attack ,defense, effect));
+            Console.Write("Enter Fusion Materials: ");
+            string materials = Console.ReadLine();
+
+            _cards.Add(new FusionCard(name, attribute, level, attack, defense, effect, materials));
         }
         else if (type == "synchro")
         {
@@ -96,14 +96,15 @@ public class CardManager
             Console.Write("Enter Defense: ");
             int defense = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter Tuner Requirement: ");
-            string tunerRequirement = Console.ReadLine();
-
             Console.Write("Enter Effect: ");
             string effect = Console.ReadLine();
 
-            _cards.Add(new SynchroCard(name, level, attribute, tunerRequirement, attack, defense, effect));
+            Console.Write("Enter Tuner Requirement: ");
+            string tunerRequirement = Console.ReadLine();
+
+            _cards.Add(new SynchroCard(name, attribute, level, attack, defense, effect, tunerRequirement));
         }
+
         else
         {
             Console.WriteLine("Unknown card type.");
@@ -143,23 +144,31 @@ public class CardManager
         foreach (string line in lines)
         {
             string[] parts = line.Split('|');
-            string type = parts[0];
+            string type = parts[0].ToLower();
 
-            if (type == "Monster")
+            if (type == "monster")
             {
                 _cards.Add(new MonsterCard(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), parts[6]));
             }
-            else if (type == "XYZ")
+            else if (type == "xyz")
             {
                 _cards.Add(new XYZCard(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), parts[6]));
             }
-            else if (type == "Spell")
+            else if (type == "spell")
             {
                 _cards.Add(new SpellCard(parts[1], parts[2], parts[3], parts[4]));
             }
-            else if (type == "Trap")
+            else if (type == "trap")
             {
                 _cards.Add(new TrapCard(parts[1], parts[2], parts[3], parts[4]));
+            }
+            else if (type == "fusion")
+            {
+                _cards.Add(new FusionCard(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), parts[6], parts[7]));
+            }
+            else if (type == "synchro")
+            {
+                _cards.Add(new SynchroCard(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), parts[6], parts[7]));
             }
         }
 
